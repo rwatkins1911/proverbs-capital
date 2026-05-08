@@ -5,765 +5,238 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <title>Proverbs Capital Investments</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0f0d;
-    --surface: #111a14;
-    --surface2: #172010;
-    --border: #1e2e20;
-    --green-dark: #1B4332;
-    --green-mid: #2D6A4F;
-    --green: #52B788;
-    --green-light: #95D5B2;
-    --green-pale: #D8F3DC;
-    --gold: #F4A261;
-    --gold-light: #FFDAB9;
-    --white: #F0F7F2;
-    --gray: #6B8F71;
-    --red: #E07070;
-    --red-light: #FFB3B3;
-    --text: #E8F5EC;
-    --text-muted: #7A9E82;
-  }
-
-- { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-background: var(–bg);
-color: var(–text);
-font-family: ‘Outfit’, sans-serif;
-min-height: 100vh;
-overflow-x: hidden;
-}
-
-/* Background texture */
-body::before {
-content: ‘’;
-position: fixed;
-inset: 0;
-background:
-radial-gradient(ellipse 80% 50% at 50% -20%, rgba(27,67,50,0.4) 0%, transparent 60%),
-radial-gradient(ellipse 50% 80% at 100% 100%, rgba(45,106,79,0.15) 0%, transparent 50%);
-pointer-events: none;
-z-index: 0;
-}
-
-.container { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; padding: 0 0 40px; }
-
-/* Header */
-.header {
-padding: 32px 20px 24px;
-border-bottom: 1px solid var(–border);
-position: relative;
-overflow: hidden;
-}
-
-.header::after {
-content: ‘’;
-position: absolute;
-bottom: 0; left: 0; right: 0;
-height: 1px;
-background: linear-gradient(90deg, transparent, var(–green-mid), transparent);
-}
-
-.header-top {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 4px;
-}
-
-.logo {
-display: flex;
-align-items: center;
-gap: 10px;
-}
-
-.logo-icon {
-width: 36px; height: 36px;
-background: linear-gradient(135deg, var(–green-dark), var(–green-mid));
-border-radius: 10px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-family: ‘DM Serif Display’, serif;
-font-size: 18px;
-color: var(–green-pale);
-box-shadow: 0 0 20px rgba(82,183,136,0.3);
-}
-
-.logo-text { font-size: 13px; font-weight: 600; color: var(–text-muted); letter-spacing: 0.08em; text-transform: uppercase; }
-
-.live-badge {
-display: flex;
-align-items: center;
-gap: 6px;
-background: rgba(82,183,136,0.1);
-border: 1px solid rgba(82,183,136,0.2);
-border-radius: 20px;
-padding: 4px 10px;
-font-size: 11px;
-color: var(–green);
-font-weight: 500;
-letter-spacing: 0.05em;
-}
-
-.live-dot {
-width: 6px; height: 6px;
-border-radius: 50%;
-background: var(–green);
-animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-0%, 100% { opacity: 1; transform: scale(1); }
-50% { opacity: 0.5; transform: scale(0.8); }
-}
-
-.title {
-font-family: ‘DM Serif Display’, serif;
-font-size: 28px;
-color: var(–white);
-line-height: 1.1;
-margin-bottom: 2px;
-}
-
-.subtitle { font-size: 12px; color: var(–text-muted); letter-spacing: 0.05em; }
-
-/* Account Value Hero */
-.hero {
-padding: 24px 20px;
-border-bottom: 1px solid var(–border);
-}
-
-.hero-label { font-size: 11px; color: var(–text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 6px; }
-
-.hero-value {
-font-family: ‘DM Mono’, monospace;
-font-size: 42px;
-font-weight: 500;
-color: var(–white);
-letter-spacing: -0.02em;
-line-height: 1;
-margin-bottom: 10px;
-}
-
-.hero-value.loading { color: var(–text-muted); font-size: 32px; }
-
-.hero-stats {
-display: grid;
-grid-template-columns: 1fr 1fr;
-gap: 10px;
-}
-
-.hero-stat {
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 12px;
-padding: 12px 14px;
-}
-
-.hero-stat-label { font-size: 10px; color: var(–text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
-
-.hero-stat-value {
-font-family: ‘DM Mono’, monospace;
-font-size: 16px;
-font-weight: 500;
-}
-
-.green { color: var(–green); }
-.gold { color: var(–gold); }
-.red { color: var(–red); }
-.white { color: var(–white); }
-
-/* Metrics Row */
-.metrics {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-gap: 1px;
-background: var(–border);
-border-top: 1px solid var(–border);
-border-bottom: 1px solid var(–border);
-}
-
-.metric {
-background: var(–surface);
-padding: 14px 12px;
-text-align: center;
-}
-
-.metric-label { font-size: 9px; color: var(–text-muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 4px; }
-.metric-value { font-family: ‘DM Mono’, monospace; font-size: 14px; font-weight: 500; }
-
-/* Section */
-.section { padding: 20px 20px 0; }
-.section-header {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 12px;
-}
-.section-title { font-size: 11px; font-weight: 600; color: var(–text-muted); letter-spacing: 0.1em; text-transform: uppercase; }
-.section-count { font-size: 11px; color: var(–text-muted); background: var(–surface); border: 1px solid var(–border); border-radius: 20px; padding: 2px 8px; }
-
-/* Position Cards */
-.position-card {
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 16px;
-padding: 16px;
-margin-bottom: 8px;
-position: relative;
-overflow: hidden;
-transition: border-color 0.2s;
-}
-
-.position-card:active { border-color: var(–green-mid); }
-
-.position-card.warning { border-color: rgba(244,162,97,0.3); }
-.position-card.warning::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 2px;
-background: linear-gradient(90deg, var(–gold), transparent);
-}
-
-.position-card.top-performer::before {
-content: ‘’;
-position: absolute;
-top: 0; left: 0; right: 0;
-height: 2px;
-background: linear-gradient(90deg, var(–green), transparent);
-}
-
-.position-row1 {
-display: flex;
-align-items: center;
-justify-content: space-between;
-margin-bottom: 10px;
-}
-
-.position-left { display: flex; align-items: center; gap: 10px; }
-
-.ticker-badge {
-background: var(–surface2);
-border: 1px solid var(–border);
-border-radius: 8px;
-padding: 6px 10px;
-font-family: ‘DM Mono’, monospace;
-font-size: 14px;
-font-weight: 500;
-color: var(–white);
-min-width: 60px;
-text-align: center;
-}
-
-.position-name { font-size: 12px; color: var(–text-muted); }
-.position-shares { font-size: 11px; color: var(–text-muted); font-family: ‘DM Mono’, monospace; }
-
-.position-right { text-align: right; }
-.position-price { font-family: ‘DM Mono’, monospace; font-size: 16px; font-weight: 500; color: var(–white); }
-.position-day-chg { font-size: 11px; font-family: ‘DM Mono’, monospace; }
-
-.position-row2 {
-display: grid;
-grid-template-columns: 1fr 1fr 1fr;
-gap: 8px;
-padding-top: 10px;
-border-top: 1px solid var(–border);
-}
-
-.pos-stat { }
-.pos-stat-label { font-size: 9px; color: var(–text-muted); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 2px; }
-.pos-stat-value { font-family: ‘DM Mono’, monospace; font-size: 12px; font-weight: 500; }
-
-/* Holding bar */
-.holding-bar-wrap { margin-top: 8px; }
-.holding-bar-label { display: flex; justify-content: space-between; margin-bottom: 3px; }
-.holding-bar-bg { height: 3px; background: var(–border); border-radius: 2px; overflow: hidden; }
-.holding-bar-fill { height: 100%; border-radius: 2px; background: var(–green); transition: width 0.5s ease; }
-.holding-bar-fill.warning { background: var(–gold); }
-
-/* Warning badge */
-.warn-badge {
-display: inline-flex;
-align-items: center;
-gap: 4px;
-background: rgba(244,162,97,0.1);
-border: 1px solid rgba(244,162,97,0.2);
-border-radius: 20px;
-padding: 2px 8px;
-font-size: 10px;
-color: var(–gold);
-margin-top: 6px;
-}
-
-/* Closed positions */
-.closed-card {
-background: var(–surface);
-border: 1px solid var(–border);
-border-radius: 12px;
-padding: 12px 14px;
-margin-bottom: 6px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-opacity: 0.7;
-}
-
-.closed-ticker { font-family: ‘DM Mono’, monospace; font-size: 13px; color: var(–text-muted); }
-.closed-pl { font-family: ‘DM Mono’, monospace; font-size: 12px; color: var(–red); }
-
-/* Milestone */
-.milestone-section { padding: 20px; }
-.milestone-title { font-size: 11px; font-weight: 600; color: var(–text-muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px; }
-
-.milestone-item { margin-bottom: 14px; }
-.milestone-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
-.milestone-label { font-size: 13px; font-weight: 500; color: var(–text); }
-.milestone-value { font-family: ‘DM Mono’, monospace; font-size: 12px; color: var(–text-muted); }
-
-.milestone-bar-bg { height: 6px; background: var(–border); border-radius: 3px; overflow: hidden; }
-.milestone-bar-fill {
-height: 100%;
-border-radius: 3px;
-background: linear-gradient(90deg, var(–green-mid), var(–green));
-transition: width 0.8s ease;
-position: relative;
-}
-.milestone-bar-fill.done { background: linear-gradient(90deg, var(–green), var(–green-light)); }
-
-.milestone-check { color: var(–green); font-size: 11px; }
-
-/* Last updated */
-.last-updated {
-text-align: center;
-padding: 16px;
-font-size: 11px;
-color: var(–text-muted);
-font-family: ‘DM Mono’, monospace;
-border-top: 1px solid var(–border);
-margin: 20px 20px 0;
-}
-
-/* Loading skeleton */
-.skeleton {
-background: linear-gradient(90deg, var(–surface) 25%, var(–border) 50%, var(–surface) 75%);
-background-size: 200% 100%;
-animation: shimmer 1.5s infinite;
-border-radius: 4px;
-}
-
-@keyframes shimmer {
-0% { background-position: 200% 0; }
-100% { background-position: -200% 0; }
-}
-
-/* Error state */
-.error-banner {
-background: rgba(224,112,112,0.1);
-border: 1px solid rgba(224,112,112,0.2);
-border-radius: 10px;
-padding: 10px 14px;
-font-size: 12px;
-color: var(–red-light);
-margin: 12px 20px;
-text-align: center;
-}
-
-/* Refresh button */
-.refresh-btn {
-display: flex;
-align-items: center;
-gap: 6px;
-background: rgba(82,183,136,0.1);
-border: 1px solid rgba(82,183,136,0.2);
-border-radius: 20px;
-padding: 6px 14px;
-font-size: 11px;
-color: var(–green);
-cursor: pointer;
-font-family: ‘Outfit’, sans-serif;
-font-weight: 500;
-}
-
-.spinning { animation: spin 1s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
-
-/* Footer */
-.footer {
-text-align: center;
-padding: 20px;
-font-size: 10px;
-color: var(–text-muted);
-letter-spacing: 0.05em;
-opacity: 0.6;
-}
-
-/* Fade in animation */
-.fade-in {
-opacity: 0;
-transform: translateY(10px);
-animation: fadeIn 0.4s ease forwards;
-}
-
-@keyframes fadeIn {
-to { opacity: 1; transform: translateY(0); }
-}
-
-.fade-in:nth-child(1) { animation-delay: 0.05s; }
-.fade-in:nth-child(2) { animation-delay: 0.1s; }
-.fade-in:nth-child(3) { animation-delay: 0.15s; }
-.fade-in:nth-child(4) { animation-delay: 0.2s; }
-.fade-in:nth-child(5) { animation-delay: 0.25s; }
-.fade-in:nth-child(6) { animation-delay: 0.3s; }
-.fade-in:nth-child(7) { animation-delay: 0.35s; }
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:#0a0f0d}
+body{background:#0a0f0d!important;color:#E8F5EC;font-family:'Outfit',sans-serif;min-height:100vh;overflow-x:hidden}
+.wrap{max-width:480px;margin:0 auto;padding-bottom:60px;background:#0a0f0d;min-height:100vh}
+.hdr{padding:28px 20px 20px;border-bottom:1px solid #1e2e20;background:#0a0f0d}
+.hdr-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,#1B4332,#2D6A4F);border-radius:10px;display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:20px;color:#D8F3DC;flex-shrink:0}
+.logo-name{font-size:12px;font-weight:600;color:#7A9E82;letter-spacing:0.08em;text-transform:uppercase}
+.rfbtn{display:flex;align-items:center;gap:5px;background:rgba(82,183,136,0.08);border:1px solid rgba(82,183,136,0.2);border-radius:20px;padding:6px 14px;font-size:11px;color:#52B788;font-weight:500;cursor:pointer;font-family:'Outfit',sans-serif}
+.dot{width:6px;height:6px;border-radius:50%;background:#52B788;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.3}}
+.hdr-title{font-family:'DM Serif Display',serif;font-size:30px;color:#F0F7F2;line-height:1.1;margin-bottom:3px}
+.hdr-sub{font-size:12px;color:#7A9E82}
+.hero{padding:24px 20px;border-bottom:1px solid #1e2e20;background:#0a0f0d}
+.hlbl{font-size:10px;color:#7A9E82;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:8px}
+.hval{font-family:'DM Mono',monospace;font-size:44px;font-weight:500;color:#F0F7F2;letter-spacing:-0.02em;line-height:1;margin-bottom:14px}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hcard{background:#111a14;border:1px solid #1e2e20;border-radius:14px;padding:14px 16px}
+.hclbl{font-size:10px;color:#7A9E82;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px}
+.hcval{font-family:'DM Mono',monospace;font-size:18px;font-weight:500}
+.mrow{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #1e2e20;border-bottom:1px solid #1e2e20}
+.mc{background:#111a14;padding:14px 10px;text-align:center;border-right:1px solid #1e2e20}
+.mc:last-child{border-right:none}
+.mclbl{font-size:9px;color:#7A9E82;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:5px}
+.mcval{font-family:'DM Mono',monospace;font-size:14px;font-weight:500}
+.sec{padding:20px 20px 0}
+.sechdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.sectitle{font-size:11px;font-weight:600;color:#7A9E82;letter-spacing:0.1em;text-transform:uppercase}
+.secbadge{font-size:11px;color:#7A9E82;background:#111a14;border:1px solid #1e2e20;border-radius:20px;padding:3px 10px}
+.pc{background:#111a14;border:1px solid #1e2e20;border-radius:16px;padding:16px;margin-bottom:10px;position:relative;overflow:hidden}
+.pc.warn{border-color:rgba(244,162,97,0.35)}
+.pc.warn::before,.pc.top::before{content:'';position:absolute;top:0;left:0;right:0;height:2px}
+.pc.warn::before{background:linear-gradient(90deg,#F4A261,transparent)}
+.pc.top::before{background:linear-gradient(90deg,#52B788,transparent)}
+.pr1{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.pleft{display:flex;align-items:center;gap:12px}
+.tkr{background:#172010;border:1px solid #1e2e20;border-radius:8px;padding:7px 12px;font-family:'DM Mono',monospace;font-size:14px;font-weight:500;color:#F0F7F2;min-width:68px;text-align:center}
+.pname{font-size:12px;color:#7A9E82;margin-bottom:2px}
+.pshr{font-size:11px;color:#3a5e42;font-family:'DM Mono',monospace}
+.pright{text-align:right}
+.pprice{font-family:'DM Mono',monospace;font-size:17px;font-weight:500;color:#F0F7F2}
+.pday{font-size:11px;font-family:'DM Mono',monospace;margin-top:2px}
+.pr2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding-top:12px;border-top:1px solid #1e2e20}
+.pslbl{font-size:9px;color:#7A9E82;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:3px}
+.psval{font-family:'DM Mono',monospace;font-size:12px;font-weight:500}
+.bwrap{margin-top:10px}
+.bhdr{display:flex;justify-content:space-between;margin-bottom:4px}
+.bbg{height:3px;background:#1e2e20;border-radius:2px;overflow:hidden}
+.bfill{height:100%;border-radius:2px;background:#52B788}
+.bfill.w{background:#F4A261}
+.wtag{display:inline-flex;align-items:center;gap:4px;background:rgba(244,162,97,0.08);border:1px solid rgba(244,162,97,0.2);border-radius:20px;padding:3px 10px;font-size:10px;color:#F4A261;margin-top:8px}
+.msec{padding:20px}
+.mstitle{font-size:11px;font-weight:600;color:#7A9E82;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px}
+.msi{margin-bottom:16px}
+.mshdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.mslbl{font-size:14px;font-weight:500;color:#E8F5EC}
+.mspct{font-family:'DM Mono',monospace;font-size:12px;color:#7A9E82}
+.msbg{height:6px;background:#1e2e20;border-radius:3px;overflow:hidden}
+.msfill{height:100%;border-radius:3px;background:linear-gradient(90deg,#2D6A4F,#52B788)}
+.msfill.done{background:linear-gradient(90deg,#52B788,#95D5B2)}
+.cc{background:#111a14;border:1px solid #1e2e20;border-radius:12px;padding:12px 16px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;opacity:0.6}
+.ctk{font-family:'DM Mono',monospace;font-size:13px;color:#7A9E82;font-weight:500}
+.cr{display:flex;gap:10px;align-items:center}
+.cpl{font-family:'DM Mono',monospace;font-size:12px;color:#E07070}
+.cpct{font-family:'DM Mono',monospace;font-size:11px;color:#E07070}
+.ctag{font-size:10px;color:#7A9E82;background:#172010;border:1px solid #1e2e20;border-radius:4px;padding:2px 7px}
+.green{color:#52B788}.gold{color:#F4A261}.red{color:#E07070}.white{color:#F0F7F2}.muted{color:#7A9E82}
+.err{background:rgba(224,112,112,0.08);border:1px solid rgba(224,112,112,0.2);border-radius:10px;padding:10px 16px;font-size:12px;color:#FFB3B3;margin:12px 20px;text-align:center}
+.upd{text-align:center;padding:16px;font-size:11px;color:#3a5e42;font-family:'DM Mono',monospace;border-top:1px solid #1e2e20;margin:20px 20px 0}
+.ftr{text-align:center;padding:20px;font-size:10px;color:#2a4e32;letter-spacing:0.06em}
+.sk{background:linear-gradient(90deg,#111a14 25%,#1e2e20 50%,#111a14 75%);background-size:200% 100%;animation:shim 1.5s infinite;border-radius:6px}
+@keyframes shim{0%{background-position:200% 0}100%{background-position:-200% 0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.fade{opacity:0;animation:fadeUp 0.4s ease forwards}
+.fade:nth-child(1){animation-delay:.05s}.fade:nth-child(2){animation-delay:.1s}.fade:nth-child(3){animation-delay:.15s}
+.fade:nth-child(4){animation-delay:.2s}.fade:nth-child(5){animation-delay:.25s}.fade:nth-child(6){animation-delay:.3s}.fade:nth-child(7){animation-delay:.35s}
+.spin{animation:spinIt 1s linear infinite;display:inline-block}
+@keyframes spinIt{to{transform:rotate(360deg)}}
 </style>
-
 </head>
 <body>
-<div class="container">
+<div class="wrap">
 
-  <!-- Header -->
-
-  <div class="header">
-    <div class="header-top">
-      <div class="logo">
-        <div class="logo-icon">P</div>
-        <div class="logo-text">Proverbs Capital</div>
-      </div>
-      <button class="refresh-btn" onclick="loadPrices()" id="refreshBtn">
-        <span id="refreshIcon">↻</span> Refresh
-      </button>
+<div class="hdr">
+  <div class="hdr-top">
+    <div class="logo">
+      <div class="logo-icon">P</div>
+      <div class="logo-name">Proverbs Capital</div>
     </div>
-    <div class="title">Portfolio Dashboard</div>
-    <div class="subtitle">Ellenwood, GA &nbsp;·&nbsp; 7 Partners &nbsp;·&nbsp; LLLP</div>
+    <button class="rfbtn" onclick="loadPrices()" id="rfBtn">
+      <span id="rfIcon">↻</span>&nbsp;Refresh
+    </button>
   </div>
+  <div class="hdr-title">Portfolio Dashboard</div>
+  <div class="hdr-sub">Ellenwood, GA &nbsp;·&nbsp; 7 Partners &nbsp;·&nbsp; LLLP</div>
+</div>
 
-  <!-- Hero -->
-
-  <div class="hero">
-    <div class="hero-label">Total Account Value</div>
-    <div class="hero-value" id="accountValue">Loading...</div>
-    <div class="hero-stats">
-      <div class="hero-stat">
-        <div class="hero-stat-label">Unrealized P/L</div>
-        <div class="hero-stat-value green" id="unrealizedPL">—</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-label">Total ROI</div>
-        <div class="hero-stat-value green" id="totalROI">—</div>
-      </div>
+<div class="hero">
+  <div class="hlbl">Total Account Value</div>
+  <div class="hval" id="acctVal">Loading...</div>
+  <div class="hgrid">
+    <div class="hcard">
+      <div class="hclbl">Unrealized P/L</div>
+      <div class="hcval green" id="upl">—</div>
+    </div>
+    <div class="hcard">
+      <div class="hclbl">Total ROI</div>
+      <div class="hcval green" id="troi">—</div>
     </div>
   </div>
+</div>
 
-  <!-- Metrics -->
+<div class="mrow">
+  <div class="mc"><div class="mclbl">Portfolio</div><div class="mcval white" id="portVal">—</div></div>
+  <div class="mc"><div class="mclbl">Cash</div><div class="mcval green">$3,160</div></div>
+  <div class="mc"><div class="mclbl">Day Change</div><div class="mcval" id="dayChg">—</div></div>
+</div>
 
-  <div class="metrics">
-    <div class="metric">
-      <div class="metric-label">Portfolio</div>
-      <div class="metric-value white" id="portfolioValue">—</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Cash</div>
-      <div class="metric-value green" id="cashValue">—</div>
-    </div>
-    <div class="metric">
-      <div class="metric-label">Day Change</div>
-      <div class="metric-value" id="dayChange">—</div>
-    </div>
+<div class="err" id="errMsg" style="display:none"></div>
+
+<div class="sec">
+  <div class="sechdr">
+    <div class="sectitle">Open Positions</div>
+    <div class="secbadge">7 holdings</div>
   </div>
-
-  <!-- Error Banner -->
-
-  <div class="error-banner" id="errorBanner" style="display:none"></div>
-
-  <!-- Open Positions -->
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">Open Positions</div>
-      <div class="section-count">7 holdings</div>
-    </div>
-    <div id="positionsContainer">
-      <!-- Skeleton -->
-      <div class="position-card">
-        <div style="height:18px;width:60%;margin-bottom:10px" class="skeleton"></div>
-        <div style="height:14px;width:40%" class="skeleton"></div>
-      </div>
-      <div class="position-card">
-        <div style="height:18px;width:55%;margin-bottom:10px" class="skeleton"></div>
-        <div style="height:14px;width:35%" class="skeleton"></div>
-      </div>
-      <div class="position-card">
-        <div style="height:18px;width:65%;margin-bottom:10px" class="skeleton"></div>
-        <div style="height:14px;width:45%" class="skeleton"></div>
-      </div>
-    </div>
+  <div id="posWrap">
+    <div class="pc"><div style="height:16px;width:55%;margin-bottom:10px" class="sk"></div><div style="height:12px;width:40%" class="sk"></div></div>
+    <div class="pc"><div style="height:16px;width:60%;margin-bottom:10px" class="sk"></div><div style="height:12px;width:35%" class="sk"></div></div>
+    <div class="pc"><div style="height:16px;width:50%;margin-bottom:10px" class="sk"></div><div style="height:12px;width:45%" class="sk"></div></div>
   </div>
+</div>
 
-  <!-- Milestones -->
+<div class="msec">
+  <div class="mstitle">Portfolio Milestones</div>
+  <div id="msWrap"></div>
+</div>
 
-  <div class="milestone-section">
-    <div class="milestone-title">Portfolio Milestones</div>
-    <div id="milestonesContainer"></div>
+<div class="sec">
+  <div class="sechdr">
+    <div class="sectitle">Closed Positions</div>
+    <div class="secbadge" style="color:#E07070">6 realized</div>
   </div>
+  <div id="clWrap"></div>
+</div>
 
-  <!-- Closed Positions -->
-
-  <div class="section">
-    <div class="section-header">
-      <div class="section-title">Closed Positions</div>
-      <div class="section-count" style="color:var(--red)">6 realized</div>
-    </div>
-    <div id="closedContainer"></div>
-  </div>
-
-  <!-- Last Updated -->
-
-  <div class="last-updated" id="lastUpdated">Fetching live prices...</div>
-
-  <!-- Footer -->
-
-  <div class="footer">PROVERBS CAPITAL INVESTMENTS, LLLP &nbsp;·&nbsp; CONFIDENTIAL</div>
-
+<div class="upd" id="lastUpd">Fetching live prices...</div>
+<div class="ftr">PROVERBS CAPITAL INVESTMENTS, LLLP &nbsp;·&nbsp; CONFIDENTIAL &nbsp;·&nbsp; PARTNERS ONLY</div>
 </div>
 
 <script>
-const API_KEY = 'd7v1tu1r01qp7l70naa0d7v1tu1r01qp7l70naag';
-
-const POSITIONS = [
-  { ticker: 'TSLA',  name: 'Tesla Inc',          shares: 37,  avgCost: 210.28 },
-  { ticker: 'INTC',  name: 'Intel Corporation',   shares: 116, avgCost: 22.68  },
-  { ticker: 'GOOGL', name: 'Alphabet Inc Cl A',   shares: 32,  avgCost: 177.72 },
-  { ticker: 'NVDA',  name: 'NVIDIA Corporation',  shares: 54,  avgCost: 121.38 },
-  { ticker: 'AAPL',  name: 'Apple Inc',           shares: 26,  avgCost: 192.49 },
-  { ticker: 'AMZN',  name: 'Amazon.com Inc',      shares: 26,  avgCost: 128.05 },
-  { ticker: 'DAL',   name: 'Delta Air Lines',     shares: 89,  avgCost: 25.91  },
+const KEY='d7v24rpr01qp7l70nujgd7v24rpr01qp7l70nuk0';
+const POS=[
+  {t:'TSLA',n:'Tesla Inc',         s:37, a:210.28},
+  {t:'INTC',n:'Intel Corporation', s:116,a:22.68},
+  {t:'GOOGL',n:'Alphabet Inc Cl A',s:32, a:177.72},
+  {t:'NVDA',n:'NVIDIA Corporation',s:54, a:121.38},
+  {t:'AAPL',n:'Apple Inc',         s:26, a:192.49},
+  {t:'AMZN',n:'Amazon.com Inc',    s:26, a:128.05},
+  {t:'DAL', n:'Delta Air Lines',   s:89, a:25.91},
 ];
-
-const CLOSED = [
-  { ticker: 'SBUX', pl: -196.43,   roi: -10.58 },
-  { ticker: 'GM',   pl: -341.51,   roi: -14.52 },
-  { ticker: 'RIVN', pl: -668.85,   roi: -24.83 },
-  { ticker: 'AYX',  pl: -1515.20,  roi: -70.72 },
-  { ticker: 'PRPL', pl: -2191.28,  roi: -95.33 },
-  { ticker: 'APPH', pl: -6253.81,  roi: -100.00 },
+const CL=[
+  {t:'SBUX',p:-196.43,  r:-10.58},
+  {t:'GM',  p:-341.51,  r:-14.52},
+  {t:'RIVN',p:-668.85,  r:-24.83},
+  {t:'AYX', p:-1515.20, r:-70.72},
+  {t:'PRPL',p:-2191.28, r:-95.33},
+  {t:'APPH',p:-6253.81, r:-100.00},
 ];
+const INVESTED=33257.65,CASH=3160;
+const MS=[{l:'$100K',v:100000},{l:'$250K',v:250000},{l:'$500K',v:500000},{l:'$1M',v:1000000}];
+const g=id=>document.getElementById(id);
+const fmt=(n,s=true)=>{if(isNaN(n))return'—';const a=Math.abs(n),sg=n<0?'-':'+',p=s?sg:'';return a>=1e6?p+'$'+(a/1e6).toFixed(2)+'M':p+'$'+a.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2})};
+const pln=n=>'$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+const pct=(n,d=1)=>(n>=0?'+':'')+n.toFixed(d)+'%';
+const col=n=>n>=0?'green':'red';
 
-const TOTAL_INVESTED = 33257.65;
-const CASH = 3160.00;
-const MILESTONES = [
-  { label: '$100K', value: 100000 },
-  { label: '$250K', value: 250000 },
-  { label: '$500K', value: 500000 },
-  { label: '$1M',   value: 1000000 },
-];
-
-function fmt(n, prefix='$') {
-  if (n === null || n === undefined || isNaN(n)) return '—';
-  const abs = Math.abs(n);
-  const sign = n < 0 ? '-' : '+';
-  if (abs >= 1000000) return sign + prefix + (abs/1000000).toFixed(2) + 'M';
-  if (abs >= 1000) return sign + prefix + abs.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-  return sign + prefix + abs.toFixed(2);
+async function fetchQ(tk){
+  try{const r=await fetch(`https://finnhub.io/api/v1/quote?symbol=${tk}&token=${KEY}`);if(!r.ok)throw 0;const d=await r.json();if(!d.c)throw 0;return{price:d.c,chg:d.d,pct:d.dp};}catch{return null;}
 }
 
-function fmtPlain(n) {
-  if (!n && n !== 0) return '—';
-  return '$' + n.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-}
+async function loadPrices(){
+  const btn=g('rfBtn'),icon=g('rfIcon');
+  icon.classList.add('spin');btn.disabled=true;
+  g('errMsg').style.display='none';
+  try{
+    const qs=await Promise.all(POS.map(p=>fetchQ(p.t)));
+    const bad=qs.filter(q=>!q).length;
+    if(bad===qs.length)throw new Error('Unable to load prices. Check API key or network.');
+    if(bad>0){g('errMsg').textContent=`${bad} price(s) unavailable.`;g('errMsg').style.display='block';}
 
-function colorClass(n) {
-  return n >= 0 ? 'green' : 'red';
-}
+    const data=POS.map((p,i)=>{
+      const q=qs[i];const price=q?q.price:p.a;
+      return{...p,price,mkt:price*p.s,pl:(price-p.a)*p.s,roi:(price-p.a)/p.a*100,dc:q?q.chg*p.s:0,dp:q?q.pct:0};
+    }).sort((a,b)=>b.mkt-a.mkt);
 
-async function fetchQuote(ticker) {
-  try {
-    const r = await fetch(`https://finnhub.io/api/v1/quote?symbol=${ticker}&token=${API_KEY}`);
-    if (!r.ok) throw new Error('API error');
-    const d = await r.json();
-    return { price: d.c, prevClose: d.pc, change: d.d, changePct: d.dp };
-  } catch(e) {
-    return null;
-  }
-}
+    const tMkt=data.reduce((s,p)=>s+p.mkt,0),tPL=data.reduce((s,p)=>s+p.pl,0),tDC=data.reduce((s,p)=>s+p.dc,0);
+    const acct=tMkt+CASH,roi=tPL/INVESTED*100;
 
-async function loadPrices() {
-  const refreshBtn = document.getElementById('refreshBtn');
-  const refreshIcon = document.getElementById('refreshIcon');
-  refreshIcon.classList.add('spinning');
-  refreshBtn.disabled = true;
+    g('acctVal').textContent='$'+acct.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});
+    g('acctVal').style.color='#F0F7F2';
+    const uplEl=g('upl');uplEl.textContent=fmt(tPL);uplEl.className='hcval '+(tPL>=0?'green':'red');
+    const roiEl=g('troi');roiEl.textContent=pct(roi,2);roiEl.className='hcval '+(roi>=0?'green':'red');
+    g('portVal').textContent='$'+Math.round(tMkt).toLocaleString();
+    const dcEl=g('dayChg');dcEl.textContent=(tDC>=0?'+':'-')+'$'+Math.abs(tDC).toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});
+    dcEl.className='mcval '+(tDC>=0?'green':'red');
 
-  document.getElementById('errorBanner').style.display = 'none';
-
-  try {
-    const quotes = await Promise.all(POSITIONS.map(p => fetchQuote(p.ticker)));
-    const failed = quotes.filter(q => !q).length;
-
-    if (failed === quotes.length) {
-      throw new Error('All price fetches failed. Check API key or network.');
-    }
-
-    if (failed > 0) {
-      document.getElementById('errorBanner').textContent = `${failed} price(s) unavailable. Showing last known data.`;
-      document.getElementById('errorBanner').style.display = 'block';
-    }
-
-    const enriched = POSITIONS.map((p, i) => {
-      const q = quotes[i];
-      const price = q ? q.price : p.avgCost;
-      const mktVal = price * p.shares;
-      const pl = (price - p.avgCost) * p.shares;
-      const roi = (price - p.avgCost) / p.avgCost * 100;
-      const dayChg = q ? q.change * p.shares : 0;
-      const dayChgPct = q ? q.changePct : 0;
-      return { ...p, price, mktVal, pl, roi, dayChg, dayChgPct, live: !!q };
+    const pw=g('posWrap');pw.innerHTML='';
+    data.forEach((p,i)=>{
+      const h=p.mkt/tMkt*100,iw=h>=20,it=i===0;
+      const c=document.createElement('div');
+      c.className=`pc fade${iw?' warn':it?' top':''}`;
+      c.innerHTML=`<div class="pr1"><div class="pleft"><div class="tkr">${p.t}</div><div><div class="pname">${p.n}</div><div class="pshr">${p.s} shares @ $${p.a.toFixed(2)}</div></div></div><div class="pright"><div class="pprice">$${p.price.toFixed(2)}</div><div class="pday ${col(p.dp)}">${pct(p.dp,2)} today</div></div></div><div class="pr2"><div><div class="pslbl">Mkt Value</div><div class="psval white">${pln(p.mkt)}</div></div><div><div class="pslbl">Unrlzd P/L</div><div class="psval ${col(p.pl)}">${fmt(p.pl)}</div></div><div><div class="pslbl">ROI</div><div class="psval ${col(p.roi)}">${pct(p.roi,1)}</div></div></div><div class="bwrap"><div class="bhdr"><span style="font-size:9px;color:#3a5e42;text-transform:uppercase;letter-spacing:.06em">HOLDING</span><span style="font-size:9px;color:${iw?'#F4A261':'#3a5e42'};font-family:'DM Mono',monospace">${h.toFixed(1)}%</span></div><div class="bbg"><div class="bfill${iw?' w':''}" style="width:${Math.min(h*4,100)}%"></div></div>${iw?'<div class="wtag">⚠ Concentration Alert</div>':''}</div>`;
+      pw.appendChild(c);
     });
 
-    // Sort by mkt value desc
-    enriched.sort((a,b) => b.mktVal - a.mktVal);
+    const mw=g('msWrap');mw.innerHTML='';
+    MS.forEach(m=>{const p=Math.min(acct/m.v*100,100),done=acct>=m.v;const d=document.createElement('div');d.className='msi';d.innerHTML=`<div class="mshdr"><div class="mslbl">${done?'✓ ':''}${m.l}</div><div class="mspct ${done?'green':''}">${done?'Complete ✓':p.toFixed(1)+'%'}</div></div><div class="msbg"><div class="msfill${done?' done':''}" style="width:${p}%"></div></div>`;mw.appendChild(d);});
 
-    const totalMkt = enriched.reduce((s,p) => s + p.mktVal, 0);
-    const totalPL = enriched.reduce((s,p) => s + p.pl, 0);
-    const totalDayChg = enriched.reduce((s,p) => s + p.dayChg, 0);
-    const totalDayChgPct = totalDayChg / (totalMkt - totalDayChg) * 100;
-    const accountVal = totalMkt + CASH;
-    const roi = totalPL / TOTAL_INVESTED * 100;
+    const cw=g('clWrap');cw.innerHTML='';
+    CL.forEach(c=>{const d=document.createElement('div');d.className='cc';d.innerHTML=`<div class="ctk">${c.t}</div><div class="cr"><div class="cpl">${fmt(c.p)}</div><div class="cpct">${c.r.toFixed(1)}%</div><div class="ctag">CLOSED</div></div>`;cw.appendChild(d);});
 
-    // Update hero
-    document.getElementById('accountValue').textContent = '$' + accountVal.toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2});
-    document.getElementById('accountValue').className = 'hero-value';
-
-    const plEl = document.getElementById('unrealizedPL');
-    plEl.textContent = fmt(totalPL);
-    plEl.className = 'hero-stat-value ' + colorClass(totalPL);
-
-    const roiEl = document.getElementById('totalROI');
-    roiEl.textContent = (roi >= 0 ? '+' : '') + roi.toFixed(2) + '%';
-    roiEl.className = 'hero-stat-value ' + colorClass(roi);
-
-    document.getElementById('portfolioValue').textContent = '$' + totalMkt.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
-
-    const dayEl = document.getElementById('dayChange');
-    dayEl.textContent = (totalDayChg >= 0 ? '+' : '') + '$' + Math.abs(totalDayChg).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0});
-    dayEl.className = 'metric-value ' + colorClass(totalDayChg);
-
-    // Render positions
-    const container = document.getElementById('positionsContainer');
-    container.innerHTML = '';
-
-    enriched.forEach((p, idx) => {
-      const holdPct = (p.mktVal / totalMkt * 100);
-      const isWarning = holdPct >= 20;
-      const isTop = p.roi === Math.max(...enriched.map(x => x.roi));
-
-      const card = document.createElement('div');
-      card.className = `position-card fade-in${isWarning ? ' warning' : (isTop ? ' top-performer' : '')}`;
-
-      card.innerHTML = `
-        <div class="position-row1">
-          <div class="position-left">
-            <div class="ticker-badge">${p.ticker}</div>
-            <div>
-              <div class="position-name">${p.name}</div>
-              <div class="position-shares">${p.shares} shares</div>
-            </div>
-          </div>
-          <div class="position-right">
-            <div class="position-price">$${p.price.toFixed(2)}</div>
-            <div class="position-day-chg ${colorClass(p.dayChgPct)}">${p.dayChgPct >= 0 ? '+' : ''}${p.dayChgPct.toFixed(2)}%</div>
-          </div>
-        </div>
-        <div class="position-row2">
-          <div class="pos-stat">
-            <div class="pos-stat-label">Mkt Value</div>
-            <div class="pos-stat-value white">${fmtPlain(p.mktVal)}</div>
-          </div>
-          <div class="pos-stat">
-            <div class="pos-stat-label">Unrlzd P/L</div>
-            <div class="pos-stat-value ${colorClass(p.pl)}">${fmt(p.pl)}</div>
-          </div>
-          <div class="pos-stat">
-            <div class="pos-stat-label">ROI</div>
-            <div class="pos-stat-value ${colorClass(p.roi)}">${p.roi >= 0 ? '+' : ''}${p.roi.toFixed(1)}%</div>
-          </div>
-        </div>
-        <div class="holding-bar-wrap">
-          <div class="holding-bar-label">
-            <span style="font-size:9px;color:var(--text-muted)">HOLDING</span>
-            <span style="font-size:9px;color:${isWarning ? 'var(--gold)' : 'var(--text-muted)'}">${holdPct.toFixed(1)}%</span>
-          </div>
-          <div class="holding-bar-bg">
-            <div class="holding-bar-fill${isWarning ? ' warning' : ''}" style="width:${Math.min(holdPct*3.5, 100)}%"></div>
-          </div>
-          ${isWarning ? '<div class="warn-badge">⚠ Concentration Alert</div>' : ''}
-        </div>
-      `;
-      container.appendChild(card);
-    });
-
-    // Milestones
-    const mContainer = document.getElementById('milestonesContainer');
-    mContainer.innerHTML = '';
-    MILESTONES.forEach(m => {
-      const pct = Math.min(accountVal / m.value * 100, 100);
-      const done = accountVal >= m.value;
-      const div = document.createElement('div');
-      div.className = 'milestone-item';
-      div.innerHTML = `
-        <div class="milestone-header">
-          <div class="milestone-label">${done ? '✓ ' : ''}${m.label}</div>
-          <div class="milestone-value ${done ? 'green' : ''}">${done ? 'Complete' : pct.toFixed(1) + '%'}</div>
-        </div>
-        <div class="milestone-bar-bg">
-          <div class="milestone-bar-fill ${done ? 'done' : ''}" style="width:${pct}%"></div>
-        </div>
-      `;
-      mContainer.appendChild(div);
-    });
-
-    // Closed positions
-    const cContainer = document.getElementById('closedContainer');
-    cContainer.innerHTML = '';
-    CLOSED.forEach(c => {
-      const div = document.createElement('div');
-      div.className = 'closed-card';
-      div.innerHTML = `
-        <div class="closed-ticker">${c.ticker}</div>
-        <div style="display:flex;gap:12px;align-items:center">
-          <div class="closed-pl">${fmt(c.pl)}</div>
-          <div style="font-size:10px;color:var(--red);font-family:'DM Mono',monospace">${c.roi.toFixed(1)}%</div>
-          <div style="font-size:10px;color:var(--text-muted);background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:2px 6px">CLOSED</div>
-        </div>
-      `;
-      cContainer.appendChild(div);
-    });
-
-    // Last updated
-    const now = new Date();
-    document.getElementById('lastUpdated').textContent = 
-      'Last updated: ' + now.toLocaleDateString('en-US', {month:'short',day:'numeric',year:'numeric'}) + 
-      ' at ' + now.toLocaleTimeString('en-US', {hour:'2-digit',minute:'2-digit'});
-
-  } catch(err) {
-    document.getElementById('errorBanner').textContent = err.message || 'Failed to load prices. Please refresh.';
-    document.getElementById('errorBanner').style.display = 'block';
-    document.getElementById('accountValue').textContent = 'Error';
-    document.getElementById('accountValue').className = 'hero-value loading';
-  }
-
-  refreshIcon.classList.remove('spinning');
-  refreshBtn.disabled = false;
+    const now=new Date();g('lastUpd').textContent='Updated: '+now.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'})+' at '+now.toLocaleTimeString('en-US',{hour:'2-digit',minute:'2-digit'});
+  }catch(e){g('errMsg').textContent=e.message||'Failed to load. Tap Refresh.';g('errMsg').style.display='block';g('acctVal').textContent='—';}
+  icon.classList.remove('spin');btn.disabled=false;
 }
-
-// Auto-load on page open
 loadPrices();
-
-// Auto-refresh every 5 minutes
-setInterval(loadPrices, 300000);
+setInterval(loadPrices,300000);
 </script>
 
 </body>
